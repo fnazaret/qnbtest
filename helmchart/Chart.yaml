@@ -1,0 +1,9 @@
+apiVersion: v1
+description: A Helm chart for the flaskapp
+name: demochart
+version: 0.1.0
+maintainers:
+- name: sudipta
+  email: sbiswas7@in.ibm.com
+- name: pradipta
+  email: bpradipt@in.ibm.com
