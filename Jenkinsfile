@@ -23,7 +23,7 @@ node {
     		stage "Deploy"
 
 		//sh "kubectl run demoapp-demochart --image ${imageName}"
-        	sh "kubectl set image deployment/demoapp-demochart demochart=${imageName}"
+        	sh "kubectl set image deployment/demoapp-demochart demoapp-demochart=${imageName}"
         	sh "kubectl rollout status deployment/demoapp-demochart"
 	}
     }
