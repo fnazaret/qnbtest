@@ -16,7 +16,7 @@ node {
 
         def pcImg = docker.build("mycluster.icp:8500/default/flask-app:${env.BUILD_ID}", "-f Dockerfile .")
         // sh "cp /root/.dockercfg ${HOME}/.dockercfg"
-	pcImg.tag("mycluster.icp:8500/default/flask-app:${env.BUILD_ID}");
+	pcImg.tag()
         pcImg.push()
 
     input 'Do you want to proceed with Deployment?'
