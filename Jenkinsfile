@@ -22,7 +22,7 @@ node {
     input 'Do you want to proceed with Deployment?'
     stage "Deploy"
 
-	sh "kubectl run --image ${imageName}"
+	sh "kubectl run demoapp-demochart --image ${imageName}"
         sh "kubectl set image deployment/demoapp-demochart demochart=${imageName}"
         sh "kubectl rollout status deployment/demoapp-demochart"
 }
