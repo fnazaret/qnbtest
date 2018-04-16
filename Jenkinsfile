@@ -6,15 +6,15 @@ node {
 
     	env.DOCKER_API_VERSION="1.23"
     	appName = "default/flask-app"
-    	registryHost = "mycluster.icp:8500/"
+    	registryHost = "icp.demo.ibm:8500/"
     	imageName = "${registryHost}${appName}:${env.BUILD_ID}"
     	env.BUILDIMG=imageName
 
-    	docker.withRegistry('https://mycluster.icp:8500/', 'docker'){
+    	docker.withRegistry('https://icp.demo.ibm:8500/', 'docker'){
        		print "Francis - within docker.with registry, build ID: ${env.BUILD_ID}"
     		stage "Build"
 
-        	def pcImg = docker.build("mycluster.icp:8500/default/flask-app:${env.BUILD_ID}", "-f Dockerfile .")
+        	def pcImg = docker.build("icp.demo.ibm:8500/default/flask-app:${env.BUILD_ID}", "-f Dockerfile .")
         	// sh "cp /root/.dockercfg ${HOME}/.dockercfg"
 		pcImg.tag()
         	pcImg.push()
