@@ -8,10 +8,10 @@ node {
     	appName = "default/flask-app"
     	registryHost = "icp.demo.ibm:8500/"
     	imageName = "${registryHost}${appName}:${env.BUILD_ID}"
-        dockerURL = 'https://${registryHost}';
+
     	env.BUILDIMG=imageName
 
-    	docker.withRegistry(dockerURL, 'docker'){
+    	docker.withRegistry('https://icp.demo.ibm:8500/', 'docker'){
        		print "Francis - within docker.with registry, build ID: ${env.BUILD_ID}"
     		stage "Build"
 
