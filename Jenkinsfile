@@ -10,11 +10,11 @@ node {
     	imageName = "${registryHost}${appName}:${env.BUILD_ID}"
     	env.BUILDIMG=imageName
 
-docker.withRegistry('https://${registryHost}/', 'docker'){
+    	docker.withRegistry('https://icp.demo.ibm:8500/', 'docker'){
        		print "Francis - within docker.with registry, build ID: ${env.BUILD_ID}"
     		stage "Build"
 
-def pcImg = docker.build("${registryHost}/default/flask-app:${env.BUILD_ID}", "-f Dockerfile .")
+        	def pcImg = docker.build("icp.demo.ibm:8500/default/flask-app:${env.BUILD_ID}", "-f Dockerfile .")
         	// sh "cp /root/.dockercfg ${HOME}/.dockercfg"
 		pcImg.tag()
         	pcImg.push()
